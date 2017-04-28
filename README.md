@@ -12,5 +12,8 @@ cd service && python main.py
 ```
 
 ## Docker
+```
 docker build -t predict-service .
 docker run -t -p 80:80 predict-service
+```
+
