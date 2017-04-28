@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-RUN apt-get update --fix-missing && apt dist-upgrade
+RUN apt-get update --fix-missing 
 
 # Install virtualenv, nginx, supervisor
 RUN apt-get install -y build-essential git
@@ -16,7 +16,7 @@ RUN pip install supervisor-stdout
 # Due to a bug with h5 we install Cython first
 RUN virtualenv /opt/venv
 ADD ./requirements.txt /opt/venv/requirements.txt
-RUN source /opt/venv/bin/activate/ && pip install Cython && pip install -r /opt/venv/requirements.txt
+RUN . /opt/venv/bin/activate; pip install -U pip Cython; pip install -r /opt/venv/requirements.txt
 
 # expose port
 EXPOSE 80
